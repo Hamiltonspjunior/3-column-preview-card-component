@@ -1,0 +1,222 @@
+:root {
+	--clr-primary-400: hsl(31, 77%, 52%);
+
+	--clr-secondary-400: hsl(184, 100%, 22%);
+	--clr-secondary-600: hsl(179, 100%, 13%);
+
+	--clr-neutral-100: hsla(0, 0%, 100%, 0.75);
+	--clr-neutral-200: hsl(0, 0%, 95%);
+	--clr-neutral-600: hsl(0, 0%, 15%);
+
+	--ff-primary: 'Lexend Deca', sans-serif;
+	--ff-secondary: 'Big Shoulders Display', cursive;
+
+	--fw-regular: 400;
+	--fw-bold: 700;
+
+	--fs-base: 10px;
+	--fs-400: 1.5rem;
+	--fs-700: 3.9rem;
+
+	--size-100: 1.5rem;
+	--size-300: 2.5rem;
+	--size-400: 3rem;
+	--size-500: 3.8rem;
+	--size-600: 4.6rem;
+	--size-900: 8.5rem;
+}
+
+.primary-theme {
+	--clr-theme: var(--clr-primary-400);
+}
+.secondary-theme {
+	--clr-theme: var(--clr-secondary-400);
+}
+.secondary-theme--dark {
+	--clr-theme: var(--clr-secondary-600);
+}
+
+
+/* Reset
+https://piccalil.li/blog/a-modern-css-reset */
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;	
+}
+
+/* Remove default margin */
+* {
+	margin: 0;
+	padding: 0;
+	font: inherit;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+	list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+	scroll-behavior: smooth;
+}
+
+html {
+	height: 100%;
+}
+
+/* Set core body defaults */
+body {
+	text-rendering: optimizeSpeed;
+	line-height: 1.6;
+	min-height: 100%;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+	text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+	max-width: 100%;
+	display: block;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+	html:focus-within {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* general styling */
+html {
+	font-size: var(--fs-base);
+}
+
+body {
+	font-family: var(--ff-primary);
+	font-size: var(--fs-400);
+	color: var(--clr-neutral-100);
+	background: var(--clr-neutral-200);
+	padding-block: var(--size-300);
+	display: flex;
+	align-items: center;
+}
+
+a {
+	color: inherit;
+}
+
+::-moz-selection {
+	/* Code for Firefox */
+	color: var(--clr-theme, var(--clr-neutral-600));
+	background: var(--clr-neutral-200);
+}
+
+::selection {
+	color: var(--clr-theme, var(--clr-neutral-600));
+	background: var(--clr-neutral-200);
+}
+
+/* Components /*
+/* Card */
+.card {
+	background-color: var(--clr-theme, var(--clr-neutral-600));
+	padding: min(var(--size-600), 11vw);
+}
+.card__title {
+	font-family: var(--ff-secondary);
+	font-size: var(--fs-700);
+	color: var(--clr-neutral-200);
+	line-height: 1;
+	text-transform: uppercase;
+}
+.card__button {
+	--flow-space: var(--size-300);
+}
+@media (min-width: 590px) {
+	.card__button {
+		--flow-space: var(--size-900);
+	}
+}
+
+/* Button */
+.button {
+	background-color: var(--clr-neutral-200);
+	border: 2px solid var(--clr-neutral-200);
+	border-radius: 100vw;
+	color: var(--clr-theme, var(--clr-neutral-600));
+	cursor: pointer;
+	display: inline-flex;
+	padding: 1em 2em;
+	line-height: 1;
+	text-decoration: none;
+	text-align: center;
+	transition: background-color 0.3s, color 0.3s;
+}
+.button:hover,
+.button:focus-visible {
+	background-color: transparent;
+	color: var(--clr-neutral-200);
+}
+
+/* Attribution */
+.attribution {
+	font-size: var(--fs-400);
+	color: var(--clr-neutral-600);
+	text-align: center;
+	margin-top: var(--size-400);
+}
+
+.attribution a {
+	color: var(--clr-theme);
+}
+
+/* Utility Clases */
+.container {
+	max-width: 970px;
+	padding-inline: var(--size-300);
+	margin-inline: auto;
+}
+
+.grid-ish {
+	display: flex;
+	flex-wrap: wrap;
+}
+.grid-ish > * {
+	--min-width: 260px;
+	flex: 1 1 var(--min-width);
+}
+
+:where(.flow :not(:first-child)) {
+	margin-top: var(--flow-space, var(--size-500));
+}
+
+.border-radius-wrapper {
+	border-radius: var(--border-size, 0.8rem);
+	overflow: hidden;
+}
+
+/* Only for testing */
+.css-console-log,
+.css-console-log * {
+	background-color: rgba(0, 0, 0, 0.09) !important;
+	outline: 1px solid red !important;
+}
